@@ -43,7 +43,9 @@ void add(char(*p)[3][10],int size)
 void print(char(*p)[3][10])
 {
 	for(int i=0;i<count;i++)
+	{
 		for(int j=0;j<3;j++)
 			printf("%s ",p[i][j]);
-	printf("\n");
+		printf("\n");
+	}
 }
