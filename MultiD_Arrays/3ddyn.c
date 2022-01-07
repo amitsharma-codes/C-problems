@@ -2,7 +2,7 @@
 #include<stdio_ext.h>
 #include<stdlib.h>
 #include<string.h>
-void* add(char ***p);
+char*** add(char ***p);
 void print(char ***p);
 void delete(char ***p);
 int count;
@@ -30,9 +30,9 @@ int main()
 	}
 	}
 }
-void* getstring()
+char* getstring()
 {
-	char*a;int i=0;
+	char *a=NULL;int i=0;
 	do
 	{
 		a=realloc(a,(i+1)*sizeof(*a));
@@ -42,11 +42,11 @@ void* getstring()
 	a=realloc(a,(i-1)*sizeof(*a));
 	return a;
 }
-void* add(char ***p)
+char*** add(char ***p)
 {
 	__fpurge(stdin);
-	p = realloc(p,(count+1)*sizeof(char **));
-	p[count]=malloc(3*sizeof(char *));
+	p = (char***)realloc(p,(count+1)*sizeof(char **));
+	p[count]=(char**)malloc(3*sizeof(char *));
 	for(int i=0;i<3;i++)
 	{
 		p[count][i]=getstring();
