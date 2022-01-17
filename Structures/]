@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdio_ext.h>
+struct student{
+	unsigned int roll;
+	char *name;
+	float mark;
+};
+int count=0;
+void input(struct student *p);
+void print(struct student *p);
+void delete(struct student *p);
+void printMenu()
+{
+	printf("Enter the choice 'i' for input:\n");
+	printf("Enter the choice 'p' for print:\n");
+	printf("Enter the choice 'd' for delete:\n");
+}
+int main()
+{
+	struct student db[10];char choice;
+	while(1)
+	{
+		printMenu();
+		scanf("%c",&choice);
+		__fpurge(stdin);
+		switch(choice)
+		{
+			case 'i': input(db);break;
+			case 'p': print(db);break;
+			case 'd': delete(db);break;
+			case 'q': return 1;
+			default :printf("Invalid entry\n");
+		}
+	}
+}
+char* getstring()
+{
+	char *p=NULL;int i=0;
+	do{
+		p=realloc(p,(i+1)*sizeof(char));
+		p[i]=getchar();
+	}while(p[i++]!='\n');
+	p[i-1]='\0';
+}
+void input(struct student *p)
+{
+	if(count>=10)
+	{
+		printf("The database is full\n");
+		return;
+	}
+		__fpurge(stdin);
+	printf("Enter the roll no.\n");
+	scanf("%d",&p[count].roll);
+		__fpurge(stdin);
+	printf("Enter the name \n");
+	p[count].name=getstring();
+		__fpurge(stdin);
+	printf("Enter the marks\n");
+	scanf("%f",&p[count].mark);
+	count++;
+	return;
+}
+void print(struct student *p)
+{
+	for(int i=0;i<count;i++)
+	{
+		printf("Roll no: %d\n",p[i].roll);
+		printf("Name: %s\n",p[i].name);
+		printf("Marks: %f\n",p[i].mark);
+	}
+}
+void delete(struct student *p)
+{
+}
