@@ -19,4 +19,3 @@ void print(struct student *p)
 {
 printf("Roll no.: %d Name: %s Marks: %f\nDOB: %d-%d-%d\n",p->roll,p->name,p->marks,p->dob.day,p->dob.month,p->dob.year);
 }
-
